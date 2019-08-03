@@ -1,0 +1,13 @@
+<h1>글 수정하기</h1>
+<form action="/post/update">
+    <input type="hidden" name="id" type value="<%=@post.id%>">
+    <p>
+        <label for="title">제목:</label>
+        <input type="text" name="title" value="<%=@post.title%>">
+    </p>
+   
+    <hr>
+    <textarea name="contents"><%=@post.contents%> </textarea>
+    <button type="submit">수정하기!</button>
+</form>
+
