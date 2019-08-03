@@ -25,7 +25,7 @@ class PostController < ApplicationController
    # require_login  
   end
   def list
-    @posts = Post.all
+    @posts = Post.all.paginate(page: params[:page], per_page: 5)
   end
   def modify
     
@@ -37,6 +37,10 @@ class PostController < ApplicationController
     _id = params[:id]
     _title =params[:title]
     _contents= params[:contents]
+    _lat = params[:lat]
+    _lng = params[:lng]
+    _address = params[:address]
+
 
     post=Post.find(_id)
     authorize_action_for post
@@ -44,7 +48,10 @@ class PostController < ApplicationController
 
     post.title= _title
     post.contents= _contents
-
+    post.lat = _lat
+    post.lng = _lng
+    post.address = _address
+ 
     post.save
 
     redirect_to controller: 'post', action: 'list'

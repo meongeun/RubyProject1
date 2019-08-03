@@ -39,8 +39,9 @@
         </li>
     <% end %>
 </ul>
-
-
+<div class="align-center" style="width:100%; text-align:center;">
+    <%= will_paginate @posts, :previous_label => t("이전"), :next_label =>t("다음") %>
+</div>
 <script>
 	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	var options = { //지도를 생성할 때 필요한 기본 옵션
