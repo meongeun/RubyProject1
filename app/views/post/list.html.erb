@@ -50,33 +50,36 @@
 
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 
-	var position  = new kakao.maps.LatLng(37.5597476,126.9433341); 
+	var positions = [
+	<% @posts.each do |post| %>
+		{
+			content: '<div style="padding:5px; width:200px; text-align:center;"><%=post.title%><br><%=post.address%></div>',
+			latlng: new kakao.maps.LatLng(<%=post.lat%>, <%=post.lng%>)
+		},
+	<% end %>
+	];
 
-	// 마커를 생성합니다
-	var marker = new kakao.maps.Marker({
-		position: position,
-		clickable: true
-	});
+	for(var i=0; i <positions.length; i++) {
+		var marker = new kakao.maps.Marker({
+			map: map,
+			position: positions[i].latlng
+		});
+		var infoWindow = new kakao.maps.InfoWindow({
+			content: positions[i].content
+		});
 
-	// 마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
+		(function(marker, infoWindow){
 
-	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-	// marker.setMap(null);    
+			kakao.maps.event.addListener(marker, 'mouseover', function() {
+				infoWindow.open(map, marker);
+			});
 
-	var iwContent = '<div style="padding:5px;">이화여자대학교</div>',
-		iwRemoveable = true;
-	var infoWindow = new kakao.maps.InfoWindow({
-	content: iwContent,
-	removable: iwRemoveable
-	});
+			kakao.maps.event.addListener(marker, 'mouseout', function() {
+				infoWindow.close();
+			});
+		})(marker, infoWindow);	
 
-	kakao.maps.event.addListener(marker, 'click', function() {
-      // 마커 위에 인포윈도우를 표시합니다
-      infoWindow.open(map, marker);  
-	});
-
-
-
+	}
+	
 
 </script>
