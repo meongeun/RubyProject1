@@ -15,11 +15,6 @@ class CommentController < ApplicationController
 
   end
 
-  def new
-     @_id = params[:id]
-   
-  end
-
   def delete
 
       _id=params[:id]

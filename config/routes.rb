@@ -1,20 +1,30 @@
 Rails.application.routes.draw do
 
-  post 'user/profile'
-  get 'user/profile'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-   
-  get 'comment/create'
-  get 'comment/new'
+
+  post 'user/profile' ##내 프로필 수정 폼and 다른 사용자의 정보 보기
+  get 'user/profile'
+  
+  get 'restaurant/delete'
+  post 'restaurant/update'
+  get 'restaurant/modify'
+  post 'restaurant/create'
+  get 'restaurant/new'
+  get 'restaurant/map'
+  get 'restaurant/search'
+  get 'restaurant/detail'
+  root 'restaurant#list'
+
+
+  post 'comment/create'
   get 'comment/delete'
-  get 'post/create'
+  post 'post/create'
   get 'post/new'
   get 'post/modify'
-  get 'post/update'
+  post 'post/update'
   get 'post/delete'
-
-  root 'post#list'
-
+  get 'post/list'
+  get 'post/detail'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

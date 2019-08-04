@@ -9,7 +9,8 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
   has_many :posts
   has_many :comments
-  
+  has_many :restaurant
+
   mount_uploader :profile, ProfileUploader
 
   after_create :set_default_role

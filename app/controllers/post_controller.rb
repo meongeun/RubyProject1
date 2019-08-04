@@ -70,4 +70,6 @@ class PostController < ApplicationController
 
   end
 
+  def detail
+  end
 end

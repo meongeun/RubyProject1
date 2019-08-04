@@ -54,7 +54,7 @@
 	var positions = [
 	<% @posts.each do |post| %>
 		{
-			content: '<div style="padding:5px; width:200px; text-align:center;"><%=post.title%><br><%=post.address%></div>',
+			content: '<div style="padding:5px; width:200px; text-align:center;"><%=post.title%><br></div>',
 			latlng: new kakao.maps.LatLng(<%=post.lat%>, <%=post.lng%>)
 		},
 	<% end %>
