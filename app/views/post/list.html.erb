@@ -51,36 +51,36 @@
 
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 
-	var positions = [
-	<% @posts.each do |post| %>
-		{
-			content: '<div style="padding:5px; width:200px; text-align:center;"><%=post.title%><br></div>',
-			latlng: new kakao.maps.LatLng(<%=post.lat%>, <%=post.lng%>)
-		},
-	<% end %>
-	];
+	//var positions = [
+	//<% @posts.each do |post| %>
+	//	{
+	//		content: '<div style="padding:5px; width:200px; text-align:center;"><%=post.title%><br></div>',
+	//		latlng:/new kakao.maps.LatLng(37.5597476,126.9433341)
+	//	},
+	//<% end %>
+	//];
 
-	for(var i=0; i <positions.length; i++) {
-		var marker = new kakao.maps.Marker({
-			map: map,
-			position: positions[i].latlng
-		});
-		var infoWindow = new kakao.maps.InfoWindow({
-			content: positions[i].content
-		});
+	//for(var i=0; i <positions.length; i++) {
+	//	var marker = new kakao.maps.Marker({
+	//		map: map,
+	//		position: positions[i].latlng
+	//	});
+	//	var infoWindow = new kakao.maps.InfoWindow({
+	//		content: positions[i].content
+	//	});
 
-		(function(marker, infoWindow){
+	//	(function(marker, infoWindow){
 
-			kakao.maps.event.addListener(marker, 'mouseover', function() {
-				infoWindow.open(map, marker);
-			});
+	//		kakao.maps.event.addListener(marker, 'mouseover', function() {
+	//			infoWindow.open(map, marker);
+	//		});
 
-			kakao.maps.event.addListener(marker, 'mouseout', function() {
-				infoWindow.close();
-			});
-		})(marker, infoWindow);	
+	//		kakao.maps.event.addListener(marker, 'mouseout', function() {
+	//			infoWindow.close();
+	//		});
+	//	})(marker, infoWindow);	
 
-	}
+	//}
 	
 
 </script>
