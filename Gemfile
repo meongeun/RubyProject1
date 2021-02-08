@@ -42,7 +42,7 @@ gem 'devise'
 gem 'rolify'
 gem 'authority'
 gem 'omniauth-facebook'
-gem 'carrierwave', ' ~>1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'will_paginate', '~>3.0'
 
 group :development, :test do
